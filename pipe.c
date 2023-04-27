@@ -60,11 +60,13 @@ int main(int argc, char *argv[]) {
             }
 
             // execute command
-            execlp(argv[i + 1], argv[i + 1], NULL);
-
+            int execute = execlp(argv[i + 1], argv[i + 1], NULL);
+			if (execute == -1) {
+				return errno;
+			}
             // if execlp returns, there was an error
-            perror("execlp");
-            exit(errno);
+            // perror("execlp");
+            // exit(errno);
         }
     }
 
