@@ -60,14 +60,12 @@ int main(int argc, char *argv[]) {
             }
 
             // execute command
-            int execute = execlp(argv[i + 1], argv[i + 1], NULL);
-			if (execute == -1) {
+            if ((execlp(argv[i + 1], argv[i + 1], NULL) == -1)) {
 				return errno;
-			}
+		
             // if execlp returns, there was an error
             // perror("execlp");
             // exit(errno);
-        }
     }
 
     // close all pipes in parent process
