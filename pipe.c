@@ -25,12 +25,14 @@ int main(int argc, char *argv[]) {
 
     // execute each command in a new process
     for (int i = 0; i < num_commands; i++) {
-        int pid = fork();
+        
+		int pid = fork();
 
         if (pid == -1) {
             perror("fork");
             exit(errno);
-        } else if (pid == 0) { // child process
+        }
+		else if (pid == 0) { // child process
             // set up input redirection from previous command
             if (i > 0) {
                 if (dup2(pipe_commands[i - 1][0], STDIN_FILENO) == -1) {
@@ -60,12 +62,12 @@ int main(int argc, char *argv[]) {
             }
 
             // execute command
-            if ((execlp(argv[i + 1], argv[i + 1], NULL) == -1)) {
-				return errno;
+            if (execlp(argv[i + 1], argv[i + 1], NULL) == -1) {
+				perror("execlp");
+				exit(errno);
 			}
-            // if execlp returns, there was an error
-            // perror("execlp");
-            // exit(errno);
+			
+		}
     }
 
     // close all pipes in parent process
@@ -81,9 +83,9 @@ int main(int argc, char *argv[]) {
     }
 
     // wait for all child processes to finish
-    int status;
+    int wstatus;
     for (int i = 0; i < num_commands; i++) {
-        if (wait(&status) == -1) {
+        if (wait(&wstatus) == -1) {
             perror("wait");
             exit(errno);
         }
