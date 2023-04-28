@@ -1,5 +1,4 @@
 ## UID: 205836697
-(IMPORTANT: Only replace the above numbers with your true UID, do not modify spacing and newlines, otherwise your tarfile might not be created correctly)
 
 ## Pipe Up
 
