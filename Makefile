@@ -8,7 +8,7 @@ UID = $(shell cat ${FILENAME} | grep '## UID'| grep -oe '\([0-9.]*\)')
 pipe: ${OBJS}
 
 tar:
-	@tar -cf ${UID}-lab1-submission.tar pipe.c README.md
+	@tar -cf ${UID}-lab1-submission.tar pipe.c README.md discussion_notes.pdf
 .PHONY: clean
 clean:
 	@rm -f ${OBJS} pipe
