@@ -2,16 +2,20 @@
 
 ## Pipe Up
 
-One sentence description
+Low level code performed by the pipe (|) operator in shells.
 
 ## Building
 
-Explain briefly how to build your program
+Clone the repository and cd into the folder you cloned the repository into. Make the program by running 'make'.
 
 ## Running
 
-Show an example run of your program, using at least two additional arguments, and what to expect
+Run: ./pipe ls
+Expect: Makefile  pipe	pipe.c	pipe.o	__pycache__  README.md	test_lab1.py
+
+Run: ./pipe ls cat wc
+Expect:       7       7      63
 
 ## Cleaning up
 
-Explain briefly how to clean up all binary files
+No clean up necessary.
